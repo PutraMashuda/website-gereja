@@ -6,7 +6,7 @@
  *
  * This content is released under the MIT License (MIT)
  *
- * Copyright (c) 2014 - 2016, British Columbia Institute of Technology
+ * Copyright (c) 2019 - 2022, CodeIgniter Foundation
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -29,8 +29,9 @@
  * @package	CodeIgniter
  * @author	EllisLab Dev Team
  * @copyright	Copyright (c) 2008 - 2014, EllisLab, Inc. (https://ellislab.com/)
- * @copyright	Copyright (c) 2014 - 2016, British Columbia Institute of Technology (http://bcit.ca/)
- * @license	http://opensource.org/licenses/MIT	MIT License
+ * @copyright	Copyright (c) 2014 - 2019, British Columbia Institute of Technology (https://bcit.ca/)
+ * @copyright	Copyright (c) 2019 - 2022, CodeIgniter Foundation (https://codeigniter.com/)
+ * @license	https://opensource.org/licenses/MIT	MIT License
  * @link	https://codeigniter.com
  * @since	Version 1.0.0
  * @filesource
@@ -44,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @subpackage	Helpers
  * @category	Helpers
  * @author		EllisLab Dev Team
- * @link		https://codeigniter.com/user_guide/helpers/captcha_helper.html
+ * @link		https://codeigniter.com/userguide3/helpers/captcha_helper.html
  */
 
 // ------------------------------------------------------------------------
@@ -54,10 +55,10 @@ if ( ! function_exists('create_captcha'))
 	/**
 	 * Create CAPTCHA
 	 *
-	 * @param	array	$data		data for the CAPTCHA
-	 * @param	string	$img_path	path to create the image in
-	 * @param	string	$img_url	URL to the CAPTCHA image folder
-	 * @param	string	$font_path	server path to font
+	 * @param	array	$data		Data for the CAPTCHA
+	 * @param	string	$img_path	Path to create the image in (deprecated)
+	 * @param	string	$img_url	URL to the CAPTCHA image folder (deprecated)
+	 * @param	string	$font_path	Server path to font (deprecated)
 	 * @return	string
 	 */
 	function create_captcha($data = '', $img_path = '', $img_url = '', $font_path = '')
@@ -94,10 +95,21 @@ if ( ! function_exists('create_captcha'))
 			}
 		}
 
-		if ($img_path === '' OR $img_url === ''
-			OR ! is_dir($img_path) OR ! is_really_writable($img_path)
-			OR ! extension_loaded('gd'))
+		if ( ! extension_loaded('gd'))
 		{
+			log_message('error', 'create_captcha(): GD extension is not loaded.');
+			return FALSE;
+		}
+
+		if ($img_path === '' OR $img_url === '')
+		{
+			log_message('error', 'create_captcha(): $img_path and $img_url are required.');
+			return FALSE;
+		}
+
+		if ( ! is_dir($img_path) OR ! is_really_writable($img_path))
+		{
+			log_message('error', "create_captcha(): '{$img_path}' is not a dir, nor is it writable.");
 			return FALSE;
 		}
 
@@ -110,7 +122,8 @@ if ( ! function_exists('create_captcha'))
 		$current_dir = @opendir($img_path);
 		while ($filename = @readdir($current_dir))
 		{
-			if (substr($filename, -4) === '.jpg' && (str_replace('.jpg', '', $filename) + $expiration) < $now)
+			if (in_array(substr($filename, -4), array('.jpg', '.png'))
+				&& (str_replace(array('.jpg', '.png'), '', $filename) + $expiration) < $now)
 			{
 				@unlink($img_path.$filename);
 			}
@@ -171,35 +184,36 @@ if ( ! function_exists('create_captcha'))
 				$byte_index = $word_index = 0;
 				while ($word_index < $word_length)
 				{
+					// Do we have more random data to use?
+					// It could be exhausted by previous iterations
+					// ignoring bytes higher than $rand_max.
+					if ($byte_index === $pool_length)
+					{
+						// No failures should be possible if the
+						// first get_random_bytes() call didn't
+						// return FALSE, but still ...
+						for ($i = 0; $i < 5; $i++)
+						{
+							if (($bytes = $security->get_random_bytes($pool_length)) === FALSE)
+							{
+								continue;
+							}
+
+							$byte_index = 0;
+							break;
+						}
+
+						if ($bytes === FALSE)
+						{
+							// Sadly, this means fallback to mt_rand()
+							$word = '';
+							break;
+						}
+					}
+
 					list(, $rand_index) = unpack('C', $bytes[$byte_index++]);
 					if ($rand_index > $rand_max)
 					{
-						// Was this the last byte we have?
-						// If so, try to fetch more.
-						if ($byte_index === $pool_length)
-						{
-							// No failures should be possible if
-							// the first get_random_bytes() call
-							// didn't return FALSE, but still ...
-							for ($i = 0; $i < 5; $i++)
-							{
-								if (($bytes = $security->get_random_bytes($pool_length)) === FALSE)
-								{
-									continue;
-								}
-
-								$byte_index = 0;
-								break;
-							}
-
-							if ($bytes === FALSE)
-							{
-								// Sadly, this means fallback to mt_rand()
-								$word = '';
-								break;
-							}
-						}
-
 						continue;
 					}
 
@@ -331,7 +345,7 @@ if ( ! function_exists('create_captcha'))
 			return FALSE;
 		}
 
-		$img = '<img '.($img_id === '' ? '' : 'id="'.$img_id.'"').' src="'.$img_url.$img_filename.'" style="width: '.$img_width.'; height: '.$img_height .'; border: 0;" alt=" " />';
+		$img = '<img '.($img_id === '' ? '' : 'id="'.$img_id.'"').' src="'.$img_url.$img_filename.'" style="width: '.$img_width.'px; height: '.$img_height .'px; border: 0;" alt=" " />';
 		ImageDestroy($im);
 
 		return array('word' => $word, 'time' => $now, 'image' => $img, 'filename' => $img_filename);
