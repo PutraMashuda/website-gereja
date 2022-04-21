@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>greja</title>
+    <title>Gereja</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -28,8 +28,8 @@
 <body>
     <aside id="left-panel" class="left-panel">
         <?php
-        	$this->load->view('menu');
-        ?>
+$this->load->view('menu');
+?>
     </aside><!-- /#left-panel -->
 
     <!-- Left Panel -->
@@ -63,7 +63,7 @@
                     </div>
                     <div class="card-body">
                         <div class="mx-auto d-block">
-                            <img class="rounded-circle mx-auto d-block" src="<?php echo base_url()?>images/book.png" alt="Card image cap" width="150" height="150">
+                            <img class="rounded-circle mx-auto d-block" src="<?php echo base_url() ?>images/book.png" alt="Card image cap" width="150" height="150">
                             <h5 class="text-sm-center mt-2 mb-1">Selamat Datang</h5>
                             <div class="location text-sm-center">Halaman Administrator</div>
                         </div>

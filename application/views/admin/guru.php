@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>greja</title>
+    <title>Gereja</title>
     <meta name="description" content="Sufee Admin - HTML5 Admin Template">
     <meta name="viewport" content="wid_guruth=device-wid_guruth, initial-scale=1">
 
@@ -30,8 +30,8 @@
 <body>
      <aside id="left-panel" class="left-panel">
         <?php
-            $this->load->view('menu');
-        ?>
+$this->load->view('menu');
+?>
     </aside><!-- /#left-panel -->
 
     <!-- Left Panel -->
@@ -61,7 +61,7 @@
             <div class="animated fadeIn">
                 <div class="row">
                 <div class="col-md-12">
-                    <a href="<?php echo base_url()?>admin/tambah_guru"><button class="btn btn-info">Tambah</button></a><br><br>
+                    <a href="<?php echo base_url() ?>admin/tambah_guru"><button class="btn btn-info">Tambah</button></a><br><br>
                 </div>
                 <div class="col-md-12">
                     <div class="card">
@@ -84,14 +84,16 @@
                               </tr>
                             </thead>
                             <tbody>
-                            <?php $no = 0; foreach($data_guru as $row) 
-                            { 
-                                $no++;
-                            ?>
+                            <?php $no = 0;foreach ($data_guru as $row) {
+    $no++;
+    ?>
                               <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><?php echo $row['nip']; ?></td>
-                                <td><?php echo $row['nama']; ?></td>
+
+                                <!-- Disini saya ganti agar path nya menggunakan tag a:href langsung
+                            dari HTML nya. bukan database. -->
+                                <td><a href="/assets_user/<?=$row['nama']?>"><?=$row['nama']?></a></td>
                                <!--  <td><?php echo $row['jenis_kelamin']; ?></td>
                                 <td><?php echo $row['umur']; ?></td>
                                 <td><?php echo $row['alamat']; ?></td>
@@ -105,8 +107,8 @@
                                     </a>
                                 </td>
                               </tr>
-                            <?php 
-                            } ?>
+                            <?php
+}?>
                             </tbody>
                           </table>
                         </div>
@@ -119,6 +121,6 @@
         </div> <!-- .content -->
     </div><!-- /#right-panel -->
 
-    <?php $this->load->view('js'); ?>
+    <?php $this->load->view('js');?>
 </body>
 </html>
