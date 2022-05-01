@@ -30,8 +30,8 @@
 <body>
     <aside id="left-panel" class="left-panel">
         <?php
-            $this->load->view('menu');
-        ?>
+$this->load->view('menu');
+?>
     </aside><!-- /#left-panel -->
 
     <!-- Left Panel -->
@@ -48,7 +48,7 @@
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="<?php echo base_url('login/logout'); ?>">Logout
+                        <a href="<?php echo base_url('logout'); ?>">Logout
                         </a>
                     </div>
 
@@ -61,7 +61,7 @@
             <div class="animated fadeIn">
                 <div class="row">
                 <div class="col-md-12">
-                    <a href="<?php echo base_url()?>admin/tambah_galeri"><button class="btn btn-info">Tambah</button></a><br><br>
+                    <a href="<?php echo base_url() ?>admin/tambah_galeri"><button class="btn btn-info">Tambah</button></a><br><br>
                 </div>
                 <div class="col-md-12">
                     <div class="card">
@@ -80,11 +80,10 @@
                               </tr>
                             </thead>
                             <tbody>
-                            <?php $no = 0; foreach($data_galeri as $row) 
-                            { 
-                                $no++;
-                                $gambar = $row['berkas'];
-                            ?>
+                            <?php $no = 0;foreach ($data_galeri as $row) {
+    $no++;
+    $gambar = $row['berkas'];
+    ?>
                               <tr>
                                 <td><?php echo $no; ?></td>
                                 <td><img src="<?php echo base_url(); ?><?php echo $row['berkas']; ?>" width="100"></td>
@@ -98,8 +97,8 @@
                                     </a>
                                 </td>
                               </tr>
-                            <?php 
-                            } ?>
+                            <?php
+}?>
                             </tbody>
                           </table>
                         </div>
@@ -112,6 +111,6 @@
         </div> <!-- .content -->
     </div><!-- /#right-panel -->
 
-    <?php $this->load->view('js'); ?>
+    <?php $this->load->view('js');?>
 </body>
 </html>

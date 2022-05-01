@@ -1,5 +1,8 @@
 <!doctype html>
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="">
+<!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,11 +28,12 @@
     <!-- <script type="text/javascript" src="<?php echo base_url() ?>https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
+
 <body>
     <aside id="left-panel" class="left-panel">
         <?php
-            $this->load->view('menu');
-        ?>
+$this->load->view('menu');
+?>
     </aside><!-- /#left-panel -->
 
     <!-- Left Panel -->
@@ -46,7 +50,7 @@
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="<?php echo base_url('login/logout'); ?>">Logout
+                        <a href="<?php echo base_url('logout'); ?>">Logout
                         </a>
                     </div>
 
@@ -58,33 +62,36 @@
         <div class="content mt-12">
             <div class="animated fadeIn">
                 <div class="row">
-                <div class="col-md-8">
-                    <a href="<?php echo base_url()?>admin/artikel"><button class="btn btn-info">Kembali</button></a><br><br>
-                </div>
-                
-                <div class="col-md-12">
-                    <div class="card">
-                      <div class="card-header">
-                        <strong>Detail</strong> Artikel
-                      </div>
-                      <div class="card-body card-block">
-                         <h4><?php echo $judul ?></h4><br>
-                         <img src="<?php echo base_url()?><?php echo $gambar ?>" width="300">
-                         <p><?php echo $isi ?></p>
-                         <p><small><i>Penulis: <b><?php echo $penulis ?></b></small></i><br>
-                         <small><i>Diposkan pada: <b><?php echo $tanggal ?></b></small></i></p>
+                    <div class="col-md-8">
+                        <a href="<?php echo base_url() ?>admin/artikel"><button
+                                class="btn btn-info">Kembali</button></a><br><br>
                     </div>
-                </div>
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Detail</strong> Artikel
+                            </div>
+                            <div class="card-body card-block">
+                                <h4><?php echo $judul ?></h4><br>
+                                <img src="<?php echo base_url() ?><?php echo $gambar ?>" width="300">
+                                <p><?php echo $isi ?></p>
+                                <p><small><i>Penulis: <b><?php echo $penulis ?></b></small></i><br>
+                                    <small><i>Diposkan pada: <b><?php echo $tanggal ?></b></small></i>
+                                </p>
+                            </div>
+                        </div>
 
 
-                </div>
-            </div><!-- .animated -->
-        </div> <!-- .content -->
-    </div><!-- /#right-panel -->
+                    </div>
+                </div><!-- .animated -->
+            </div> <!-- .content -->
+        </div><!-- /#right-panel -->
 
-    <!-- Right Panel -->
+        <!-- Right Panel -->
 
-    <?php $this->load->view('js'); ?>
-    
+        <?php $this->load->view('js');?>
+
 </body>
+
 </html>

@@ -16,3 +16,7 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+
+# All file in folder uploads except default.png
+uploads/*
+!uploads/img/default.png

@@ -28,8 +28,8 @@
 <body>
     <aside id="left-panel" class="left-panel">
         <?php
-            $this->load->view('menu');
-        ?>
+$this->load->view('menu');
+?>
     </aside><!-- /#left-panel -->
 
     <!-- Left Panel -->
@@ -46,7 +46,7 @@
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="<?php echo base_url('login/logout'); ?>">Logout
+                        <a href="<?php echo base_url('logout'); ?>">Logout
                         </a>
                     </div>
 
@@ -59,9 +59,9 @@
             <div class="animated fadeIn">
                 <div class="row">
                 <div class="col-md-8">
-                    <a href="<?php echo base_url()?>admin/profil"><button class="btn btn-info">Kembali</button></a><br><br>
+                    <a href="<?php echo base_url() ?>admin/profil"><button class="btn btn-info">Kembali</button></a><br><br>
                 </div>
-                
+
                 <div class="col-md-12">
                     <div class="card">
                       <div class="card-header">
@@ -69,7 +69,7 @@
                       </div>
                       <div class="card-body card-block">
                          <h4><?php echo $nama ?></h4><br>
-                         <img src="<?php echo base_url()?><?php echo $gambar ?>" width="300">
+                         <img src="<?php echo base_url() ?><?php echo $gambar ?>" width="300">
                          <p><?php echo $isi ?></p>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
 
     <!-- Right Panel -->
 
-    <?php $this->load->view('js'); ?>
-    
+    <?php $this->load->view('js');?>
+
 </body>
 </html>
