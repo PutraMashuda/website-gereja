@@ -7,12 +7,13 @@ class Login extends CI_Controller
     {
         parent::__construct();
         $this->load->model('m_login');
+        $this->load->helper('login');
     }
 
     public function index()
     {
         // Check if user already logged in
-        if ($this->session->userdata('status') == 'login') {
+        if (IsLoggedIn()) {
             redirect('admin');
             return false;
         }
@@ -22,6 +23,11 @@ class Login extends CI_Controller
 
     public function gagal_login()
     {
+        if (IsLoggedIn()) {
+            redirect('admin');
+            return false;
+        }
+
         $this->load->view('gagal_login');
     }
 
@@ -40,7 +46,7 @@ class Login extends CI_Controller
 
             $data_session = array(
                 'nama' => $username,
-                'status' => "login",
+                'isLoggedIn' => true,
             );
 
             $this->session->set_userdata($data_session);
@@ -52,11 +58,5 @@ class Login extends CI_Controller
             echo "Username dan password salah !";
             redirect(base_url("login/gagal_login"));
         }
-    }
-
-    public function logout()
-    {
-        $this->session->sess_destroy();
-        redirect(base_url('login'));
     }
 }

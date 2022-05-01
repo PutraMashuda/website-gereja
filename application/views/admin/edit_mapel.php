@@ -28,8 +28,8 @@
 <body>
     <aside id="left-panel" class="left-panel">
         <?php
-            $this->load->view('menu');
-        ?>
+$this->load->view('menu');
+?>
     </aside><!-- /#left-panel -->
 
     <!-- Left Panel -->
@@ -46,7 +46,7 @@
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="<?php echo base_url('login/logout'); ?>">Logout
+                        <a href="<?php echo base_url('logout'); ?>">Logout
                         </a>
                     </div>
 
@@ -59,23 +59,23 @@
             <div class="animated fadeIn">
                 <div class="row">
                 <div class="col-md-8">
-                    <a href="<?php echo base_url()?>admin/mapel"><button class="btn btn-info">Kembali</button></a><br><br>
+                    <a href="<?php echo base_url() ?>admin/mapel"><button class="btn btn-info">Kembali</button></a><br><br>
                 </div>
-                
+
                 <div class="col-md-8">
                     <div class="card">
                       <div class="card-header">
                         <strong>Edit</strong> Mata Pelajaran
                       </div>
                       <div class="card-body card-block">
-                        <form action="<?php echo base_url()?>admin/update_mapel" method="post" enctype="multipart/form-data" class="form-horizontal">
-                            <input type="hidden" name="id_mapel" value="<?php echo $id_mapel?>">
+                        <form action="<?php echo base_url() ?>admin/update_mapel" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <input type="hidden" name="id_mapel" value="<?php echo $id_mapel ?>">
                               <div class="row form-group">
                                 <div class="col col-md-3">
                                     <label for="text-input" class=" form-control-label">Mata Pelajaran</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <input type="text" id="text-input" name="nama" value="<?php echo $nama?>" placeholder="mapel" class="form-control">
+                                    <input type="text" id="text-input" name="nama" value="<?php echo $nama ?>" placeholder="mapel" class="form-control">
                                 </div>
                               </div>
                           </div>
@@ -99,7 +99,7 @@
 
     <!-- Right Panel -->
 
-    <?php $this->load->view('js'); ?>
-    
+    <?php $this->load->view('js');?>
+
 </body>
 </html>

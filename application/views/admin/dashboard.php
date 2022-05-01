@@ -46,7 +46,7 @@ $this->load->view('menu');
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="<?php echo base_url('login/logout'); ?>">Logout
+                        <a href="<?php echo base_url('logout'); ?>">Logout
                         </a>
                     </div>
 

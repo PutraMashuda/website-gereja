@@ -28,8 +28,8 @@
 <body>
     <aside id="left-panel" class="left-panel">
         <?php
-            $this->load->view('menu');
-        ?>
+$this->load->view('menu');
+?>
     </aside><!-- /#left-panel -->
 
     <!-- Left Panel -->
@@ -46,7 +46,7 @@
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="<?php echo base_url('login/logout'); ?>">Logout
+                        <a href="<?php echo base_url('logout'); ?>">Logout
                         </a>
                     </div>
 
@@ -59,16 +59,16 @@
             <div class="animated fadeIn">
                 <div class="row">
                 <div class="col-md-8">
-                    <a href="<?php echo base_url()?>admin/guru"><button class="btn btn-info">Kembali</button></a><br><br>
+                    <a href="<?php echo base_url() ?>admin/guru"><button class="btn btn-info">Kembali</button></a><br><br>
                 </div>
-                
+
                 <div class="col-md-12">
                     <div class="card">
                       <div class="card-header">
                         <strong>Edit</strong> Siswa Kelas III
                       </div>
                       <div class="card-body card-block">
-                        <form action="<?php echo base_url()?>admin/update_siswa_iii" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="<?php echo base_url() ?>admin/update_siswa_iii" method="post" enctype="multipart/form-data" class="form-horizontal">
                             <input type="hidden" name="id_siswa" value="<?php echo $id_siswa ?>">
                             <input type="hidden" name="kelas" value="III">
                               <div class="row form-group">
@@ -146,7 +146,7 @@
 
     <!-- Right Panel -->
 
-    <?php $this->load->view('js'); ?>
-    
+    <?php $this->load->view('js');?>
+
 </body>
 </html>
