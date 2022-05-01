@@ -18,5 +18,6 @@ application/logs/*
 /vendor/
 
 # All file in folder uploads except default.png
-uploads/*
+uploads/pdf/*
+uploads/img/*
 !uploads/img/default.png
