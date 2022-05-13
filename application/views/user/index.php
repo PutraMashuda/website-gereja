@@ -69,16 +69,19 @@
 
 	                        <a class="btn btn-dark mt-3 mb-3 btn-lg" style="width: 200px"
 	                            href="<?php echo base_url('user') ?>" role="button">Home</a><br>
-
+<!-- 
 	                        <a class="btn btn-dark mt-3 mb-3 btn-lg" style="width: 200px"
-	                            href="<?php echo base_url('user/galeri') ?>" role="button">Video</a><br>
+	                            href="<?php echo base_url('user/galeri') ?>" role="button">Video</a><br> -->
 
 	                        <a class="btn btn-dark mt-3 mb-3 btn-lg" style="width: 200px"
 	                            href="<?php echo base_url('user/jadwal') ?>" role="button">Jadwal Ibadah</a><br>
 
 	                        <a class="btn btn-dark mt-3 mb-3 btn-lg" style="width: 200px"
-	                            href="<?php echo base_url('user/guru') ?>" role="button">Warta Jemaat</a><br>
-
+	                            href="<?php echo base_url('user/mata_pelajaran') ?>" role="button">Anggota dan Pengurus</a><br>
+				    
+				<a class="btn btn-dark mt-3 mb-3 btn-lg" style="width: 200px"
+	                            href="<?php echo base_url('user/guru') ?>" role="button">Warta Jemaat</a><br>  
+				    
 	                        <a class="btn btn-dark mt-3 mb-3 btn-lg" style="width: 200px"
 	                            href="<?php echo base_url('liturgi') ?>" role="button">Liturgi</a><br>
 
